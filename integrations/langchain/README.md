@@ -18,7 +18,7 @@ import { ChatPromptTemplate } from '@langchain/core/prompts';
 
 // Initialize toolkit
 const toolkit = new SECEdgarAgentToolkit({
-  mcpServerUrl: 'sec-edgar-mcp',
+  userAgent: 'YourApp/1.0 (your.email@example.com)', // Required by SEC EDGAR
   configuration: {
     actions: {
       companies: { lookupCIK: true, getInfo: true, getFacts: true },
@@ -28,9 +28,6 @@ const toolkit = new SECEdgarAgentToolkit({
     }
   }
 });
-
-// Connect to MCP server
-await toolkit.connect();
 
 // Create agent
 const llm = new ChatOpenAI({ modelName: 'gpt-4' });
@@ -51,9 +48,6 @@ const result = await executor.invoke({
 });
 
 console.log(result.output);
-
-// Disconnect when done
-await toolkit.disconnect();
 ```
 
 ## Available Tools
@@ -74,7 +68,7 @@ Control which tools are available:
 
 ```typescript
 const toolkit = new SECEdgarAgentToolkit({
-  mcpServerUrl: 'sec-edgar-mcp',
+  userAgent: 'YourApp/1.0 (your.email@example.com)',
   configuration: {
     actions: {
       companies: {
