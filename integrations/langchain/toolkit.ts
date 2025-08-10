@@ -1,4 +1,3 @@
-import { Tool } from '@langchain/core/tools';
 import { DynamicStructuredTool } from '@langchain/core/tools';
 import { z } from 'zod';
 
@@ -33,7 +32,7 @@ export interface SECEdgarToolkitOptions {
 export class SECEdgarAgentToolkit {
   private mcpServerUrl: string;
   private configuration: Configuration;
-  private tools: Tool[] = [];
+  private tools: DynamicStructuredTool[] = [];
 
   constructor(options: SECEdgarToolkitOptions) {
     this.mcpServerUrl = options.mcpServerUrl;
@@ -85,7 +84,7 @@ export class SECEdgarAgentToolkit {
     console.log('Disconnecting from MCP server');
   }
 
-  getTools(): Tool[] {
+  getTools(): DynamicStructuredTool[] {
     return this.tools;
   }
 }
