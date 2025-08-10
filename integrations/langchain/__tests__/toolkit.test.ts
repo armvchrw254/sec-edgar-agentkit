@@ -5,7 +5,7 @@ describe('SECEdgarAgentToolkit', () => {
   describe('initialization', () => {
     it('should initialize with default configuration', () => {
       const toolkit = new SECEdgarAgentToolkit({
-        mcpServerUrl: 'test-server'
+        userAgent: 'TestApp/1.0 (test@example.com)'
       });
 
       const tools = toolkit.getTools();
@@ -22,7 +22,7 @@ describe('SECEdgarAgentToolkit', () => {
 
     it('should respect configuration to disable tools', () => {
       const toolkit = new SECEdgarAgentToolkit({
-        mcpServerUrl: 'test-server',
+        userAgent: 'TestApp/1.0 (test@example.com)',
         configuration: {
           actions: {
             companies: {
@@ -48,7 +48,7 @@ describe('SECEdgarAgentToolkit', () => {
   describe('tool access', () => {
     it('should get tool by name', () => {
       const toolkit = new SECEdgarAgentToolkit({
-        mcpServerUrl: 'test-server'
+        userAgent: 'TestApp/1.0 (test@example.com)'
       });
 
       const tool = toolkit.getTool('sec_edgar_cik_lookup');
@@ -58,11 +58,47 @@ describe('SECEdgarAgentToolkit', () => {
 
     it('should return undefined for non-existent tool', () => {
       const toolkit = new SECEdgarAgentToolkit({
-        mcpServerUrl: 'test-server'
+        userAgent: 'TestApp/1.0 (test@example.com)'
       });
 
       const tool = toolkit.getTool('non_existent_tool');
       expect(tool).toBeUndefined();
+    });
+  });
+
+  describe('tool schemas', () => {
+    it('should have correct schema for CIK lookup tool', () => {
+      const toolkit = new SECEdgarAgentToolkit({
+        userAgent: 'TestApp/1.0 (test@example.com)',
+        configuration: {
+          actions: {
+            companies: { lookupCIK: true }
+          }
+        }
+      });
+
+      const tool = toolkit.getTool('sec_edgar_cik_lookup');
+      expect(tool).toBeDefined();
+      expect(tool?.description).toContain('CIK');
+      
+      // Test the schema has the expected structure
+      const schema = tool?.schema;
+      expect(schema).toBeDefined();
+    });
+
+    it('should have correct schema for filing search tool', () => {
+      const toolkit = new SECEdgarAgentToolkit({
+        userAgent: 'TestApp/1.0 (test@example.com)',
+        configuration: {
+          actions: {
+            filings: { search: true }
+          }
+        }
+      });
+
+      const tool = toolkit.getTool('sec_edgar_filing_search');
+      expect(tool).toBeDefined();
+      expect(tool?.description).toContain('Search for filings');
     });
   });
 });

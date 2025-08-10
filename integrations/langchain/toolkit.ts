@@ -39,8 +39,67 @@ export class SECEdgarAgentToolkit {
     this.client = createClient({
       userAgent: options.userAgent
     });
-    this.configuration = options.configuration || { actions: {} };
+    
+    // Default configuration: enable all tools
+    const defaultConfig: Configuration = {
+      actions: {
+        companies: {
+          lookupCIK: true,
+          getInfo: true,
+          getFacts: true
+        },
+        filings: {
+          search: true,
+          getContent: true,
+          analyze8K: true,
+          extractSection: true
+        },
+        financial: {
+          getStatements: true,
+          parseXBRL: true
+        },
+        insiderTrading: {
+          analyzeTransactions: true
+        }
+      }
+    };
+    
+    // Merge user configuration with defaults
+    this.configuration = this.mergeConfiguration(defaultConfig, options.configuration || {});
     this.initializeTools();
+  }
+
+  private mergeConfiguration(defaultConfig: Configuration, userConfig: Configuration): Configuration {
+    const merged: Configuration = { actions: {} };
+    
+    // If user explicitly sets false for a category, respect that
+    if (userConfig.actions === false) {
+      return { actions: false };
+    }
+    
+    // Merge each category
+    const categories = ['companies', 'filings', 'financial', 'insiderTrading'] as const;
+    
+    for (const category of categories) {
+      const defaultCategory = defaultConfig.actions?.[category];
+      const userCategory = userConfig.actions?.[category];
+      
+      if (userCategory === false) {
+        // User explicitly disabled this category
+        merged.actions![category] = false;
+      } else if (userCategory === undefined) {
+        // User didn't specify, use default
+        merged.actions![category] = defaultCategory;
+      } else if (typeof userCategory === 'object' && typeof defaultCategory === 'object') {
+        // Merge individual actions
+        merged.actions![category] = { ...defaultCategory, ...userCategory };
+      } else {
+        // Use user configuration
+        merged.actions![category] = userCategory;
+      }
+    }
+    
+    return merged;
   }
 
   private initializeTools(): void {
@@ -383,5 +442,13 @@ export class SECEdgarAgentToolkit {
 
   getTools(): DynamicStructuredTool[] {
     return this.tools;
+  }
+
+  getToolNames(): string[] {
+    return this.tools.map(tool => tool.name);
+  }
+
+  getTool(name: string): DynamicStructuredTool | undefined {
+    return this.tools.find(tool => tool.name === name);
   }
 }
