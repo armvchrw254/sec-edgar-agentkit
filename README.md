@@ -1,5 +1,17 @@
-# SEC EDGAR Agent Kit <img align="right" src="https://img.shields.io/npm/v/@sec-edgar-agentkit/langchain" alt="npm version" /> <img align="right" src="https://img.shields.io/github/license/stefanoamorelli/sec-edgar-agentkit" alt="License" /> <img align="right" src="https://img.shields.io/badge/TypeScript-007ACC?logo=typescript&logoColor=white" alt="TypeScript" /> <img align="right" src="https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white" alt="Python" /> <img align="right" src="https://img.shields.io/badge/Nx-143055?logo=nx&logoColor=white" alt="Nx Monorepo" /> <img align="right" src="https://img.shields.io/badge/AI-Agents-FF6B6B?logo=openai&logoColor=white" alt="AI Agents" /> <img align="right" src="https://img.shields.io/badge/LangChain-1C3C3C?logo=chainlink&logoColor=white" alt="LangChain" /> <img align="right" src="https://img.shields.io/badge/MCP-Protocol-4A90E2?logo=protocol&logoColor=white" alt="MCP Protocol" />
-<br/>
+# SEC EDGAR Agent Kit
+
+<p align="left">
+  <img src="https://img.shields.io/npm/v/@sec-edgar-agentkit/langchain" alt="npm version" />
+  <img src="https://img.shields.io/github/license/stefanoamorelli/sec-edgar-agentkit" alt="License" />
+  <img src="https://img.shields.io/badge/TypeScript-007ACC?logo=typescript&logoColor=white" alt="TypeScript" />
+  <img src="https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white" alt="Python" />
+  <img src="https://img.shields.io/badge/Nx-143055?logo=nx&logoColor=white" alt="Nx Monorepo" />
+  <img src="https://img.shields.io/badge/AI-Agents-FF6B6B?logo=openai&logoColor=white" alt="AI Agents" />
+  <img src="https://img.shields.io/badge/LangChain-1C3C3C?logo=chainlink&logoColor=white" alt="LangChain" />
+  <img src="https://img.shields.io/badge/MCP-Protocol-4A90E2?logo=protocol&logoColor=white" alt="MCP Protocol" />
+</p>
+
+
 
 A multi-framework monorepo toolkit for building AI agents and applications that can access and analyze [SEC EDGAR](https://www.sec.gov/edgar) filing data. Built on top of the [sec-edgar-mcp](https://github.com/stefanoamorelli/sec-edgar-mcp) Model Context Protocol server.
 
