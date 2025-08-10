@@ -1,0 +1,56 @@
+identity:
+  name: get_recent_filings
+  author: SEC EDGAR Agent Kit
+  label:
+    en_US: Get Recent SEC Filings
+description:
+  human:
+    en_US: Search for recent SEC filings by company CIK, form type, and date range
+  llm: Search and retrieve recent SEC filings for a company. Can filter by form type (10-K, 10-Q, 8-K, etc.) and date range. Returns filing metadata including accession numbers for further analysis.
+parameters:
+  - name: cik
+    type: string
+    required: true
+    label:
+      en_US: Company CIK
+    human_description:
+      en_US: The company's CIK (Central Index Key)
+    llm_description: The company's CIK number to search filings for
+    form: llm
+  - name: form_type
+    type: string
+    required: false
+    label:
+      en_US: Form Type
+    human_description:
+      en_US: Type of filing to filter (e.g., "10-K", "10-Q", "8-K", "DEF 14A")
+    llm_description: SEC form type to filter results. Common types include 10-K (annual report), 10-Q (quarterly report), 8-K (current report), DEF 14A (proxy statement)
+    form: llm
+  - name: start_date
+    type: string
+    required: false
+    label:
+      en_US: Start Date
+    human_description:
+      en_US: Start date for filing search (YYYY-MM-DD format)
+    llm_description: Start date for the filing search in YYYY-MM-DD format
+    form: llm
+  - name: end_date
+    type: string
+    required: false
+    label:
+      en_US: End Date
+    human_description:
+      en_US: End date for filing search (YYYY-MM-DD format)
+    llm_description: End date for the filing search in YYYY-MM-DD format
+    form: llm
+  - name: limit
+    type: number
+    required: false
+    default: 10
+    label:
+      en_US: Result Limit
+    human_description:
+      en_US: Maximum number of results to return
+    llm_description: Maximum number of filing results to return (default 10)
+    form: llm

@@ -1,0 +1,45 @@
+identity:
+  name: get_filing_content
+  author: Stefano Amorelli
+  label:
+    en_US: Get Filing Content
+description:
+  human:
+    en_US: Extract and retrieve the content of a specific SEC filing
+  llm: Extract the full text content or specific sections from an SEC filing using its accession number. Can return content in text or HTML format. Supports extraction of specific sections like Risk Factors (1A), MD&A (7), etc.
+parameters:
+  - name: accession_number
+    type: string
+    required: true
+    label:
+      en_US: Accession Number
+    human_description:
+      en_US: The filing's accession number (e.g., "0000320193-24-000123")
+    llm_description: The unique accession number identifying the filing in EDGAR system
+    form: llm
+  - name: section
+    type: string
+    required: false
+    label:
+      en_US: Section
+    human_description:
+      en_US: Specific section to extract (e.g., "1A" for Risk Factors, "7" for MD&A)
+    llm_description: Specific section identifier to extract. Common sections include "1A" (Risk Factors), "7" (MD&A), "8" (Financial Statements), "9A" (Controls and Procedures)
+    form: llm
+  - name: format
+    type: select
+    required: false
+    default: "text"
+    options:
+      - value: "text"
+        label:
+          en_US: Plain Text
+      - value: "html"
+        label:
+          en_US: HTML
+    label:
+      en_US: Output Format
+    human_description:
+      en_US: Format for the returned content
+    llm_description: Output format - "text" for plain text or "html" for formatted HTML
+    form: llm

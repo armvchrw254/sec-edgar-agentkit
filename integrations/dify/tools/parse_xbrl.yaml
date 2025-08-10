@@ -1,0 +1,38 @@
+identity:
+  name: parse_xbrl
+  author: Stefano Amorelli
+  label:
+    en_US: Parse XBRL Data
+description:
+  human:
+    en_US: Parse XBRL data from SEC filings for precise financial data extraction
+  llm: Extract structured financial data directly from XBRL instance documents. Provides precise numerical values with contexts, units, and periods. Can extract specific concepts or all available data with human-readable labels.
+parameters:
+  - name: accession_number
+    type: string
+    required: true
+    label:
+      en_US: Accession Number
+    human_description:
+      en_US: The filing's accession number containing XBRL data
+    llm_description: The accession number of the filing to parse XBRL data from
+    form: llm
+  - name: concepts
+    type: string
+    required: false
+    label:
+      en_US: XBRL Concepts
+    human_description:
+      en_US: Comma-separated list of specific XBRL concepts to extract
+    llm_description: Specific XBRL concept names to extract, separated by commas. Examples: "Assets,Liabilities,Revenues,NetIncomeLoss"
+    form: llm
+  - name: include_labels
+    type: boolean
+    required: false
+    default: true
+    label:
+      en_US: Include Labels
+    human_description:
+      en_US: Include human-readable labels for XBRL concepts
+    llm_description: Whether to include human-readable labels alongside technical XBRL concept names
+    form: llm

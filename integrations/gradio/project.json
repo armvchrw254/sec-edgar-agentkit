@@ -1,0 +1,38 @@
+{
+  "name": "gradio",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "integrations/gradio",
+  "tags": ["type:integration", "lang:python"],
+  "targets": {
+    "serve": {
+      "executor": "@nxlv/python:run",
+      "options": {
+        "module": "app",
+        "cwd": "integrations/gradio"
+      }
+    },
+    "test": {
+      "executor": "@nxlv/python:test",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "testMatch": "**/test_*.py",
+        "cwd": "integrations/gradio"
+      }
+    },
+    "lint": {
+      "executor": "@nxlv/python:lint",
+      "options": {
+        "cwd": "integrations/gradio",
+        "lintFilePatterns": ["**/*.py"]
+      }
+    },
+    "install": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "pip install -r requirements.txt",
+        "cwd": "integrations/gradio"
+      }
+    }
+  }
+}

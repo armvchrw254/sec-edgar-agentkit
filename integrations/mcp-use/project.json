@@ -1,0 +1,31 @@
+{
+  "name": "mcp-use",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "integrations/mcp-use",
+  "tags": ["type:integration", "lang:javascript"],
+  "targets": {
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "integrations/mcp-use/jest.config.cjs",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["integrations/mcp-use/**/*.js"]
+      }
+    },
+    "publish": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "npm publish",
+        "cwd": "integrations/mcp-use"
+      }
+    }
+  }
+}

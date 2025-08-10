@@ -1,0 +1,19 @@
+identity:
+  name: analyze_8k
+  author: Stefano Amorelli
+  label:
+    en_US: Analyze 8-K Filing
+description:
+  human:
+    en_US: Analyze an 8-K filing to extract key events and information
+  llm: Analyze an 8-K current report filing to extract and summarize material events. Returns structured information about items reported, including leadership changes, acquisitions, financial updates, and other material events that companies must disclose.
+parameters:
+  - name: accession_number
+    type: string
+    required: true
+    label:
+      en_US: Accession Number
+    human_description:
+      en_US: The 8-K filing's accession number
+    llm_description: The unique accession number of the 8-K filing to analyze
+    form: llm

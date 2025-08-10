@@ -1,0 +1,85 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-test:
+    name: Build and Test (Nx)
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0  # Needed for Nx affected commands
+    
+    - name: Setup Bun
+      uses: oven-sh/setup-bun@v2
+      with:
+        bun-version: latest
+    
+    - name: Set up Python 3.11
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+    
+    - name: Install dependencies
+      run: bun install
+    
+    - name: Setup Nx SHAs
+      uses: nrwl/nx-set-shas@v4
+    
+    - name: Run affected linting
+      run: npx nx affected -t lint
+    
+    - name: Run affected tests
+      run: npx nx affected -t test
+    
+    - name: Run affected builds
+      run: npx nx affected -t build
+    
+
+  test-matrix:
+    name: Test Matrix (Python ${{ matrix.python-version }})
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.8', '3.9', '3.10', '3.11', '3.12']
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v5
+      with:
+        python-version: ${{ matrix.python-version }}
+    
+    - name: Setup Bun
+      uses: oven-sh/setup-bun@v2
+      with:
+        bun-version: latest
+    
+    - name: Install dependencies
+      run: bun install
+    
+    - name: Install Python dependencies for Gradio
+      run: |
+        cd integrations/gradio && pip install -r requirements.txt
+    
+    - name: Test Python components with Nx
+      run: |
+        npx nx run gradio:test
+        npx nx run dify:test
+
+  dependency-review:
+    name: Dependency Review
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/dependency-review-action@v4
+

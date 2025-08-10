@@ -1,0 +1,19 @@
+identity:
+  name: lookup_cik
+  author: SEC EDGAR Agent Kit
+  label:
+    en_US: Lookup Company CIK
+description:
+  human:
+    en_US: Look up a company's CIK (Central Index Key) by name or ticker symbol
+  llm: Look up a company's CIK (Central Index Key) by searching with company name or ticker symbol. Returns the CIK and basic company information.
+parameters:
+  - name: query
+    type: string
+    required: true
+    label:
+      en_US: Company Name or Ticker
+    human_description:
+      en_US: The company name (e.g., "Apple Inc") or ticker symbol (e.g., "AAPL") to search for
+    llm_description: Company name or ticker symbol to search for in the SEC EDGAR database
+    form: llm

@@ -1,0 +1,55 @@
+identity:
+  name: analyze_financials
+  author: SEC EDGAR Agent Kit
+  label:
+    en_US: Analyze Financial Statements
+description:
+  human:
+    en_US: Extract and analyze financial statements from 10-K and 10-Q filings
+  llm: Extract financial statements and key metrics from SEC filings. Retrieves income statements, balance sheets, and cash flow data from 10-K (annual) and 10-Q (quarterly) reports. Returns structured financial data for analysis.
+parameters:
+  - name: cik
+    type: string
+    required: true
+    label:
+      en_US: Company CIK
+    human_description:
+      en_US: The company's CIK (Central Index Key)
+    llm_description: The company's CIK number to retrieve financial statements for
+    form: llm
+  - name: form_type
+    type: select
+    required: true
+    options:
+      - value: "10-K"
+        label:
+          en_US: "10-K (Annual Report)"
+      - value: "10-Q"
+        label:
+          en_US: "10-Q (Quarterly Report)"
+    label:
+      en_US: Report Type
+    human_description:
+      en_US: Type of financial report to analyze
+    llm_description: Type of financial filing - 10-K for annual reports or 10-Q for quarterly reports
+    form: llm
+  - name: year
+    type: number
+    required: false
+    label:
+      en_US: Year
+    human_description:
+      en_US: Specific year to retrieve (optional)
+    llm_description: Specific year to retrieve financial data for
+    form: llm
+  - name: quarter
+    type: number
+    required: false
+    min: 1
+    max: 4
+    label:
+      en_US: Quarter
+    human_description:
+      en_US: Specific quarter (1-4) for 10-Q reports
+    llm_description: Quarter number (1-4) for 10-Q reports
+    form: llm

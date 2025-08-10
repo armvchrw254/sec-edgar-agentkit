@@ -1,0 +1,41 @@
+{
+  "name": "@sec-edgar-agentkit/mcp-use",
+  "version": "0.1.0",
+  "description": "Natural language interface for SEC EDGAR data using MCP-use",
+  "type": "module",
+  "main": "index.js",
+  "author": "Stefano Amorelli <stefano@amorelli.tech>",
+  "license": "AGPL-3.0",
+  "homepage": "https://github.com/stefanoamorelli/sec-edgar-agentkit/tree/main/integrations/mcp-use",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stefanoamorelli/sec-edgar-agentkit.git",
+    "directory": "integrations/mcp-use"
+  },
+  "keywords": [
+    "sec",
+    "edgar",
+    "mcp",
+    "natural-language",
+    "financial",
+    "analysis"
+  ],
+  "scripts": {
+    "start": "node index.js",
+    "test": "bun test __tests__"
+  },
+  "dependencies": {
+    "mcp-use": "^0.1.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "files": [
+    "index.js",
+    "README.md",
+    "LICENSE"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}

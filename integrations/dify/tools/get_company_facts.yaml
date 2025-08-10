@@ -1,0 +1,37 @@
+identity:
+  name: get_company_facts
+  author: Stefano Amorelli
+  label:
+    en_US: Get Company Facts (XBRL)
+description:
+  human:
+    en_US: Get company facts and financial data points from SEC XBRL data
+  llm: Retrieve structured financial data and company facts from XBRL submissions. Can filter by specific taxonomies (us-gaap, dei) and tags. Returns historical values with units and periods.
+parameters:
+  - name: cik
+    type: string
+    required: true
+    label:
+      en_US: Company CIK
+    human_description:
+      en_US: The company's CIK (Central Index Key)
+    llm_description: The company's CIK number to retrieve XBRL facts for
+    form: llm
+  - name: taxonomy
+    type: string
+    required: false
+    label:
+      en_US: Taxonomy
+    human_description:
+      en_US: Specific taxonomy to filter (e.g., "us-gaap", "dei", "invest")
+    llm_description: XBRL taxonomy to filter results. Common values are "us-gaap" for financial data, "dei" for document entity information
+    form: llm
+  - name: tag
+    type: string
+    required: false
+    label:
+      en_US: XBRL Tag
+    human_description:
+      en_US: Specific XBRL tag to retrieve (e.g., "Revenues", "Assets", "NetIncomeLoss")
+    llm_description: Specific XBRL concept tag to retrieve. Examples include "Revenues", "Assets", "Liabilities", "NetIncomeLoss", "EarningsPerShareBasic"
+    form: llm

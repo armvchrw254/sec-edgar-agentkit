@@ -1,0 +1,32 @@
+{
+  "name": "@sec-edgar-agentkit/smolagents",
+  "version": "0.1.0",
+  "description": "SEC EDGAR agentkit for Hugging Face smolagents framework",
+  "author": "Stefano Amorelli <stefano@amorelli.tech>",
+  "license": "AGPL-3.0",
+  "homepage": "https://github.com/stefanoamorelli/sec-edgar-agentkit",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stefanoamorelli/sec-edgar-agentkit.git",
+    "directory": "integrations/smolagents"
+  },
+  "main": "src/index.py",
+  "files": [
+    "src/",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "sec",
+    "edgar",
+    "smolagents",
+    "huggingface",
+    "agent",
+    "financial",
+    "analysis"
+  ],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  }
+}

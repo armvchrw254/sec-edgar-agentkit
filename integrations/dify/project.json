@@ -1,0 +1,36 @@
+{
+  "name": "dify",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "integrations/dify",
+  "tags": ["type:integration", "lang:python"],
+  "targets": {
+    "lint": {
+      "executor": "@nxlv/python:lint",
+      "options": {
+        "cwd": "integrations/dify",
+        "lintFilePatterns": ["**/*.py"]
+      }
+    },
+    "validate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "python -m py_compile main.py",
+          "python -c \"import yaml; yaml.safe_load(open('manifest.yaml'))\"",
+          "for f in tools/*.yaml; do python -c \"import yaml; yaml.safe_load(open('$f'))\"; done"
+        ],
+        "cwd": "integrations/dify",
+        "parallel": false
+      }
+    },
+    "package": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "zip -r ../../dist/dify-plugin.zip manifest.yaml main.py tools/",
+        "cwd": "integrations/dify"
+      },
+      "outputs": ["{workspaceRoot}/dist/dify-plugin.zip"]
+    }
+  }
+}

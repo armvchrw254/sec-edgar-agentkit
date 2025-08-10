@@ -1,0 +1,19 @@
+identity:
+  name: get_company_info
+  author: Stefano Amorelli
+  label:
+    en_US: Get Company Information
+description:
+  human:
+    en_US: Get detailed information about a company using its CIK
+  llm: Retrieve comprehensive company information including name, ticker, exchange, entity type, SIC description, location, and other metadata from SEC EDGAR database using the company's CIK.
+parameters:
+  - name: cik
+    type: string
+    required: true
+    label:
+      en_US: Company CIK
+    human_description:
+      en_US: The company's CIK (Central Index Key) - a unique identifier assigned by the SEC
+    llm_description: The company's CIK number (e.g., "0000320193" for Apple Inc.)
+    form: llm

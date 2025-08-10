@@ -1,0 +1,87 @@
+identity:
+  name: analyze_insider_trading
+  author: SEC EDGAR Agent Kit
+  label:
+    en_US: Analyze Insider Trading
+description:
+  human:
+    en_US: Analyze insider trading transactions from Forms 3, 4, and 5
+  llm: Analyze insider trading activity reported in SEC Forms 3 (initial ownership), 4 (changes in ownership), and 5 (annual statement). Returns transaction details including purchases, sales, and ownership changes by company insiders.
+parameters:
+  - name: cik
+    type: string
+    required: true
+    label:
+      en_US: Company CIK
+    human_description:
+      en_US: The company's CIK (Central Index Key)
+    llm_description: The company's CIK number to analyze insider trading for
+    form: llm
+  - name: insider_cik
+    type: string
+    required: false
+    label:
+      en_US: Insider CIK
+    human_description:
+      en_US: Specific insider's CIK to filter (optional)
+    llm_description: CIK of a specific insider to filter transactions
+    form: llm
+  - name: form_type
+    type: select
+    required: false
+    options:
+      - value: "3"
+        label:
+          en_US: "Form 3 (Initial Ownership)"
+      - value: "4"
+        label:
+          en_US: "Form 4 (Change in Ownership)"
+      - value: "5"
+        label:
+          en_US: "Form 5 (Annual Statement)"
+    label:
+      en_US: Form Type
+    human_description:
+      en_US: Specific insider trading form type
+    llm_description: Type of insider trading form to filter - 3 (initial), 4 (changes), or 5 (annual)
+    form: llm
+  - name: transaction_type
+    type: select
+    required: false
+    options:
+      - value: "P"
+        label:
+          en_US: "Purchase"
+      - value: "S"
+        label:
+          en_US: "Sale"
+      - value: "A"
+        label:
+          en_US: "Award"
+      - value: "D"
+        label:
+          en_US: "Disposition"
+    label:
+      en_US: Transaction Type
+    human_description:
+      en_US: Type of transaction to filter
+    llm_description: Transaction type - P (Purchase), S (Sale), A (Award), or D (Disposition)
+    form: llm
+  - name: start_date
+    type: string
+    required: false
+    label:
+      en_US: Start Date
+    human_description:
+      en_US: Start date for search (YYYY-MM-DD format)
+    llm_description: Start date for transaction search in YYYY-MM-DD format
+    form: llm
+  - name: end_date
+    type: string
+    required: false
+    label:
+      en_US: End Date
+    human_description:
+      en_US: End date for search (YYYY-MM-DD format)
+    llm_description: End date for transaction search in YYYY-MM-DD format
+    form: llm

@@ -1,0 +1,34 @@
+{
+  "name": "@sec-edgar-agentkit/gradio",
+  "version": "0.1.0",
+  "description": "Interactive Gradio web interface for SEC EDGAR data analysis",
+  "author": "Stefano Amorelli <stefano@amorelli.tech>",
+  "license": "AGPL-3.0",
+  "homepage": "https://github.com/stefanoamorelli/sec-edgar-agentkit/tree/main/integrations/gradio",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stefanoamorelli/sec-edgar-agentkit.git",
+    "directory": "integrations/gradio"
+  },
+  "keywords": [
+    "sec",
+    "edgar",
+    "gradio",
+    "ui",
+    "web-interface",
+    "financial",
+    "analysis"
+  ],
+  "scripts": {
+    "start": "./run.sh",
+    "dev": "python app.py",
+    "test": "python __tests__/gradio.test.py"
+  },
+  "files": [
+    "app.py",
+    "run.sh",
+    "requirements.txt",
+    "README.md",
+    "LICENSE"
+  ]
+}

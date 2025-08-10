@@ -1,0 +1,29 @@
+{
+  "name": "@sec-edgar-agentkit/dify-plugin",
+  "version": "0.1.0",
+  "description": "Dify plugin for SEC EDGAR data integration",
+  "author": "Stefano Amorelli <stefano@amorelli.tech>",
+  "license": "AGPL-3.0",
+  "homepage": "https://github.com/stefanoamorelli/sec-edgar-agentkit/tree/main/integrations/dify",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stefanoamorelli/sec-edgar-agentkit.git",
+    "directory": "integrations/dify"
+  },
+  "keywords": [
+    "sec",
+    "edgar",
+    "dify",
+    "plugin",
+    "workflow",
+    "financial",
+    "analysis"
+  ],
+  "files": [
+    "manifest.yaml",
+    "main.py",
+    "tools/*.yaml",
+    "README.md",
+    "LICENSE"
+  ]
+}
