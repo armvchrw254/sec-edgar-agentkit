@@ -1,4 +1,5 @@
 # SEC EDGAR Agent Kit <img align="right" src="https://img.shields.io/npm/v/@sec-edgar-agentkit/langchain" alt="npm version" /> <img align="right" src="https://img.shields.io/github/license/stefanoamorelli/sec-edgar-agentkit" alt="License" /> <img align="right" src="https://img.shields.io/badge/TypeScript-007ACC?logo=typescript&logoColor=white" alt="TypeScript" /> <img align="right" src="https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white" alt="Python" /> <img align="right" src="https://img.shields.io/badge/Nx-143055?logo=nx&logoColor=white" alt="Nx Monorepo" /> <img align="right" src="https://img.shields.io/badge/AI-Agents-FF6B6B?logo=openai&logoColor=white" alt="AI Agents" /> <img align="right" src="https://img.shields.io/badge/LangChain-1C3C3C?logo=chainlink&logoColor=white" alt="LangChain" /> <img align="right" src="https://img.shields.io/badge/MCP-Protocol-4A90E2?logo=protocol&logoColor=white" alt="MCP Protocol" />
+<br/>
 
 A multi-framework monorepo toolkit for building AI agents and applications that can access and analyze [SEC EDGAR](https://www.sec.gov/edgar) filing data. Built on top of the [sec-edgar-mcp](https://github.com/stefanoamorelli/sec-edgar-mcp) Model Context Protocol server.
 
@@ -7,8 +8,8 @@ This monorepo contains multiple packages and integrations, each optimized for di
 ## Supported Frameworks
 
 - <img src="https://python.langchain.com/img/favicon.ico" alt="LangChain" width="16" height="16"/> **[LangChain](https://github.com/langchain-ai/langchain)** - Build sophisticated agents with LangChain's agent framework ([integrations/langchain](./integrations/langchain))
-- <img src="https://avatars.githubusercontent.com/u/192908368?s=200&v=4" alt="MCP-use" width="16" height="16"/> **[MCP-use](https://github.com/mcp-use/mcp-use)** - Create MCP agents with any LLM for accessing SEC EDGAR data ([integrations/mcp-use](./integrations/mcp-use))
-- <img src="https://www.gradio.app/favicon.ico" alt="Gradio" width="16" height="16"/> **[Gradio](https://github.com/gradio-app/gradio)** - Interactive web interface for exploring SEC filings ([integrations/gradio](./integrations/gradio))
+- <img src="https://avatars.githubusercontent.com/u/207005519?s=48&v=4" alt="MCP-use" width="16" height="16"/> **[MCP-use](https://github.com/mcp-use/mcp-use)** - Create MCP agents with any LLM for accessing SEC EDGAR data ([integrations/mcp-use](./integrations/mcp-use))
+- <img src="https://avatars.githubusercontent.com/u/51063788?s=48&v=4" alt="Gradio" width="16" height="16"/> **[Gradio](https://github.com/gradio-app/gradio)** - Interactive web interface for exploring SEC filings ([integrations/gradio](./integrations/gradio))
 - <img src="https://cloud.dify.ai/favicon.ico" alt="Dify" width="16" height="16"/> **[Dify](https://github.com/langgenius/dify)** - Plugin for Dify workflow automation platform ([integrations/dify](./integrations/dify))
 - <img src="https://huggingface.co/favicon.ico" alt="smolagents" width="16" height="16"/> **[smolagents](https://github.com/huggingface/smolagents)** - Lightweight agent framework by Hugging Face for quick prototypes ([integrations/smolagents](./integrations/smolagents))
 
@@ -39,11 +40,9 @@ pip install sec-edgar-agentkit-smolagents
 
 ### Gradio and Dify
 
-```bash
-# For Gradio and Dify, see their respective documentation in:
-# - integrations/gradio/README.md
-# - integrations/dify/README.md
-```
+For Gradio and Dify setup instructions, see their respective documentation:
+- Gradio: [integrations/gradio/README.md](./integrations/gradio/README.md)
+- Dify: [integrations/dify/README.md](./integrations/dify/README.md)
 
 ### Development setup
 
@@ -234,9 +233,9 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## License
 
-© 2025 Stefano Amorelli
+© 2025 [Stefano Amorelli](https://amorelli.tech)
 
-This open-source project is licensed under the GNU Affero General Public License v3.0 (AGPL-3.0). This means:
+This open-source project is licensed under the [GNU Affero General Public License v3.0 (AGPL-3.0)](https://www.gnu.org/licenses/agpl-3.0.html). This means:
 
 - You can use, modify, and distribute this software
 - If you modify and distribute it, you must release your changes under AGPL-3.0
@@ -245,6 +244,4 @@ This open-source project is licensed under the GNU Affero General Public License
 
 For commercial licensing options or other licensing inquiries, please contact stefano@amorelli.tech.
 
-## Author
-
-[Stefano Amorelli](https://amorelli.tech)
+Author: [Stefano Amorelli](https://amorelli.tech)
