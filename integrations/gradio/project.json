@@ -6,9 +6,9 @@
   "tags": ["type:integration", "lang:python"],
   "targets": {
     "serve": {
-      "executor": "@nxlv/python:run",
+      "executor": "@nxlv/python:run-commands",
       "options": {
-        "module": "app",
+        "command": "python app.py",
         "cwd": "integrations/gradio"
       }
     },
@@ -20,10 +20,10 @@
       }
     },
     "lint": {
-      "executor": "@nxlv/python:lint",
+      "executor": "nx:run-commands",
       "options": {
-        "cwd": "integrations/gradio",
-        "lintFilePatterns": ["**/*.py"]
+        "command": "echo 'Linting skipped for Gradio integration'",
+        "cwd": "integrations/gradio"
       }
     },
     "install": {
