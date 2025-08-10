@@ -20,11 +20,12 @@
       }
     },
     "build": {
-      "executor": "@nxlv/python:build",
-      "outputs": ["{projectRoot}/dist"],
+      "executor": "nx:run-commands",
       "options": {
-        "outputPath": "integrations/smolagents/dist"
-      }
+        "command": "python -m build",
+        "cwd": "integrations/smolagents"
+      },
+      "outputs": ["{projectRoot}/dist"]
     },
     "serve": {
       "executor": "nx:run-commands",
