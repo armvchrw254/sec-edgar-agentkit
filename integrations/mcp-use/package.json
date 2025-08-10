@@ -1,5 +1,5 @@
 {
-  "name": "@sec-edgar-agentkit/mcp-use",
+  "name": "sec-edgar-mcp-use",
   "version": "0.1.0",
   "description": "Natural language interface for SEC EDGAR data using MCP-use",
   "type": "module",

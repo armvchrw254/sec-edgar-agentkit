@@ -1,5 +1,5 @@
 {
-  "name": "@sec-edgar-agentkit/langchain",
+  "name": "sec-edgar-langchain",
   "version": "0.1.0",
   "description": "LangChain toolkit for SEC EDGAR data analysis",
   "main": "dist/index.js",
