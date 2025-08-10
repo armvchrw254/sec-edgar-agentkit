@@ -13,16 +13,14 @@
       }
     },
     "test": {
-      "executor": "@nxlv/python:pytest",
-      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "executor": "nx:run-commands",
       "options": {
-        "testFiles": ["integrations/smolagents/__tests__"],
-        "coverage": true,
-        "coverageDirectory": "coverage/integrations/smolagents"
+        "command": "pytest __tests__ --cov=src --cov-report=html:../../coverage/integrations/smolagents",
+        "cwd": "integrations/smolagents"
       }
     },
     "build": {
-      "executor": "@nxlv/python:poetry-build",
+      "executor": "@nxlv/python:build",
       "outputs": ["{projectRoot}/dist"],
       "options": {
         "outputPath": "integrations/smolagents/dist"
@@ -36,7 +34,7 @@
       }
     },
     "publish": {
-      "executor": "@nxlv/python:poetry-publish",
+      "executor": "@nxlv/python:publish",
       "options": {
         "repository": "pypi"
       },

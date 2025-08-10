@@ -1,99 +1,90 @@
 import { Tool } from '@langchain/core/tools';
-import { MCPClient } from '../../src/core/mcp-client';
-import { Configuration, SECEdgarToolkitOptions } from '../../src/core/types';
-import {
-  CIKLookupTool,
-  CompanyInfoTool,
-  CompanyFactsTool,
-} from '../../src/tools/company-tools';
-import {
-  FilingSearchTool,
-  FilingContentTool,
-  Analyze8KTool,
-} from '../../src/tools/filing-tools';
-import {
-  FinancialStatementsTool,
-  XBRLParseTool,
-} from '../../src/tools/financial-tools';
-import {
-  InsiderTradingTool,
-} from '../../src/tools/insider-trading-tools';
+import { z } from 'zod';
+
+export interface Configuration {
+  actions?: {
+    companies?: {
+      lookupCIK?: boolean;
+      getInfo?: boolean;
+      getFacts?: boolean;
+    };
+    filings?: {
+      search?: boolean;
+      getContent?: boolean;
+      analyze8K?: boolean;
+      extractSection?: boolean;
+    };
+    financial?: {
+      getStatements?: boolean;
+      parseXBRL?: boolean;
+    };
+    insiderTrading?: {
+      analyzeTransactions?: boolean;
+    };
+  };
+}
+
+export interface SECEdgarToolkitOptions {
+  mcpServerUrl: string;
+  configuration?: Configuration;
+}
 
 export class SECEdgarAgentToolkit {
-  private mcpClient: MCPClient;
+  private mcpServerUrl: string;
   private configuration: Configuration;
   private tools: Tool[] = [];
 
   constructor(options: SECEdgarToolkitOptions) {
-    this.mcpClient = new MCPClient(options.mcpServerUrl);
+    this.mcpServerUrl = options.mcpServerUrl;
     this.configuration = options.configuration || { actions: {} };
     this.initializeTools();
   }
 
   private initializeTools(): void {
-    const { actions } = this.configuration;
-
-    // Company tools
-    if (actions.companies !== false) {
-      if (actions.companies?.lookupCIK !== false) {
-        this.tools.push(new CIKLookupTool(this.mcpClient));
-      }
-      if (actions.companies?.getInfo !== false) {
-        this.tools.push(new CompanyInfoTool(this.mcpClient));
-      }
-      if (actions.companies?.getFacts !== false) {
-        this.tools.push(new CompanyFactsTool(this.mcpClient));
-      }
+    // Note: This is a placeholder implementation
+    // The actual implementation would connect to the MCP server
+    // For now, we create placeholder tools
+    
+    if (this.configuration.actions?.companies?.lookupCIK) {
+      this.tools.push(new Tool({
+        name: 'sec_edgar_cik_lookup',
+        description: 'Look up a company\'s CIK by name or ticker symbol',
+        schema: z.object({
+          query: z.string().describe('Company name or ticker symbol'),
+        }),
+        func: async ({ query }) => {
+          return `CIK lookup for ${query} requires MCP server connection`;
+        },
+      }));
     }
 
-    // Filing tools
-    if (actions.filings !== false) {
-      if (actions.filings?.search !== false) {
-        this.tools.push(new FilingSearchTool(this.mcpClient));
-      }
-      if (actions.filings?.getContent !== false) {
-        this.tools.push(new FilingContentTool(this.mcpClient));
-      }
-      if (actions.filings?.analyze8K !== false) {
-        this.tools.push(new Analyze8KTool(this.mcpClient));
-      }
+    if (this.configuration.actions?.companies?.getInfo) {
+      this.tools.push(new Tool({
+        name: 'sec_edgar_company_info',
+        description: 'Get detailed company information using CIK',
+        schema: z.object({
+          cik: z.string().describe('Company CIK'),
+        }),
+        func: async ({ cik }) => {
+          return `Company info for CIK ${cik} requires MCP server connection`;
+        },
+      }));
     }
 
-    // Financial tools
-    if (actions.financial !== false) {
-      if (actions.financial?.getStatements !== false) {
-        this.tools.push(new FinancialStatementsTool(this.mcpClient));
-      }
-      if (actions.financial?.parseXBRL !== false) {
-        this.tools.push(new XBRLParseTool(this.mcpClient));
-      }
-    }
-
-    // Insider trading tools
-    if (actions.insiderTrading !== false) {
-      if (actions.insiderTrading?.analyzeTransactions !== false) {
-        this.tools.push(new InsiderTradingTool(this.mcpClient));
-      }
-    }
+    // Add more tools based on configuration...
   }
 
   async connect(): Promise<void> {
-    await this.mcpClient.connect();
+    // Placeholder for MCP connection
+    console.log(`Connecting to MCP server at ${this.mcpServerUrl}`);
   }
 
   async disconnect(): Promise<void> {
-    await this.mcpClient.disconnect();
+    // Placeholder for MCP disconnection
+    console.log('Disconnecting from MCP server');
   }
 
   getTools(): Tool[] {
     return this.tools;
-  }
-
-  getTool(name: string): Tool | undefined {
-    return this.tools.find(tool => tool.name === name);
-  }
-
-  getToolNames(): string[] {
-    return this.tools.map(tool => tool.name);
   }
 }

@@ -5,6 +5,13 @@
   "sourceRoot": "integrations/mcp-use",
   "tags": ["type:integration", "lang:javascript"],
   "targets": {
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "echo 'No build required for JavaScript package'",
+        "cwd": "integrations/mcp-use"
+      }
+    },
     "test": {
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
