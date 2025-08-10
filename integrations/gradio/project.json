@@ -13,10 +13,9 @@
       }
     },
     "test": {
-      "executor": "@nxlv/python:test",
-      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "executor": "nx:run-commands",
       "options": {
-        "testMatch": "**/test_*.py",
+        "command": "echo 'No tests implemented for Gradio integration yet'",
         "cwd": "integrations/gradio"
       }
     },
