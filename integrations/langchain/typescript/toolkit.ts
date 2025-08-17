@@ -331,7 +331,7 @@ export class SECEdgarAgentToolkit {
         func: async ({ cik, formType, fiscalYear, fiscalPeriod }) => {
           try {
             const company = await this.client.companies.getByCik(cik);
-            let filings = await company.filings
+            const filings = await company.filings
               .formTypes([formType])
               .recent(1)
               .fetch();
