@@ -35,12 +35,18 @@ jobs:
     
     - name: Run affected linting
       run: npx nx affected -t lint || echo "Linting issues found, but continuing build"
+      env:
+        NODE_OPTIONS: --max-old-space-size=6144
     
     - name: Run affected tests
       run: npx nx affected -t test
+      env:
+        NODE_OPTIONS: --max-old-space-size=6144
     
     - name: Run affected builds
       run: npx nx affected -t build
+      env:
+        NODE_OPTIONS: --max-old-space-size=6144
     
 
   test-matrix:
