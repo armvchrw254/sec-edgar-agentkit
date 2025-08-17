@@ -1,13 +1,14 @@
 module.exports = {
   displayName: 'langchain',
-  preset: '../../jest.preset.cjs',
+  preset: 'ts-jest',
   testEnvironment: 'node',
-  transform: {
-    '^.+\\.[tj]s$': ['ts-jest', {
-      tsconfig: '<rootDir>/tsconfig.json',
-    }],
-  },
-  moduleFileExtensions: ['ts', 'js'],
+  rootDir: 'typescript',
   testMatch: ['**/__tests__/**/*.test.ts'],
-  coverageDirectory: '../../coverage/integrations/langchain'
+  coverageDirectory: '../../../coverage/integrations/langchain',
+  moduleFileExtensions: ['ts', 'js'],
+  transform: {
+    '^.+\\.ts$': ['ts-jest', {
+      tsconfig: './tsconfig.json'
+    }]
+  }
 };

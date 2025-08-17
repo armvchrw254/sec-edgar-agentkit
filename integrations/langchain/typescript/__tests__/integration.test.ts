@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'bun:test';
+import { describe, it, expect } from '@jest/globals';
 import { SECEdgarAgentToolkit } from '../toolkit';
 
 describe('Integration Tests', () => {
@@ -29,7 +29,10 @@ describe('Integration Tests', () => {
               lookupCIK: true,
               getInfo: false
             },
-            financial: false
+            financial: {
+              getStatements: false,
+              parseXBRL: false
+            }
           }
         }
       });

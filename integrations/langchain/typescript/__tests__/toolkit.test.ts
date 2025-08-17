@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'bun:test';
+import { describe, it, expect } from '@jest/globals';
 import { SECEdgarAgentToolkit } from '../toolkit';
 
 describe('SECEdgarAgentToolkit', () => {
@@ -30,9 +30,19 @@ describe('SECEdgarAgentToolkit', () => {
               getInfo: false,
               getFacts: false
             },
-            filings: false,
-            financial: false,
-            insiderTrading: false
+            filings: {
+              search: false,
+              getContent: false,
+              analyze8K: false,
+              extractSection: false
+            },
+            financial: {
+              getStatements: false,
+              parseXBRL: false
+            },
+            insiderTrading: {
+              analyzeTransactions: false
+            }
           }
         }
       });

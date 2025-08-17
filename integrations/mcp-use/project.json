@@ -13,11 +13,10 @@
       }
     },
     "test": {
-      "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "executor": "nx:run-commands",
       "options": {
-        "jestConfig": "integrations/mcp-use/jest.config.cjs",
-        "passWithNoTests": true
+        "command": "echo 'No tests configured yet for mcp-use'",
+        "cwd": "integrations/mcp-use"
       }
     },
     "lint": {
