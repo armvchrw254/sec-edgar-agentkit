@@ -1,0 +1,59 @@
+name: Test LangGraph Integration
+
+on:
+  push:
+    branches: [main, develop]
+    paths:
+      - 'integrations/langgraph/**'
+      - '.github/workflows/test-langgraph.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'integrations/langgraph/**'
+      - '.github/workflows/test-langgraph.yml'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x]
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+      
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest
+      
+      - name: Install dependencies
+        run: |
+          cd integrations/langgraph
+          bun install
+      
+      - name: Build package
+        run: |
+          cd integrations/langgraph
+          bun run build
+      
+      - name: Run tests
+        run: |
+          cd integrations/langgraph
+          bun test
+      
+      - name: Type check
+        run: |
+          cd integrations/langgraph
+          npx tsc --noEmit
+      
+      - name: Test examples compile
+        run: |
+          cd integrations/langgraph
+          npx tsc --noEmit examples/*.ts

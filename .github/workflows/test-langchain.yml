@@ -1,0 +1,54 @@
+name: Test LangChain Integration
+
+on:
+  push:
+    branches: [main, develop]
+    paths:
+      - 'integrations/langchain/**'
+      - '.github/workflows/test-langchain.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'integrations/langchain/**'
+      - '.github/workflows/test-langchain.yml'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x]
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+      
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest
+      
+      - name: Install dependencies
+        run: |
+          cd integrations/langchain
+          bun install
+      
+      - name: Build package
+        run: |
+          cd integrations/langchain
+          bun run build
+      
+      - name: Run tests
+        run: |
+          cd integrations/langchain
+          bun test
+      
+      - name: Type check
+        run: |
+          cd integrations/langchain
+          npx tsc --noEmit
