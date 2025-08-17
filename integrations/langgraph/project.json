@@ -1,0 +1,37 @@
+{
+  "name": "langgraph",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "integrations/langgraph/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "integrations/langgraph/dist",
+        "main": "integrations/langgraph/src/index.ts",
+        "tsConfig": "integrations/langgraph/tsconfig.json",
+        "assets": [
+          "integrations/langgraph/*.md",
+          "integrations/langgraph/LICENSE"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "integrations/langgraph/jest.config.cjs",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["integrations/langgraph/**/*.ts"]
+      }
+    }
+  },
+  "tags": ["integration", "langgraph"]
+}

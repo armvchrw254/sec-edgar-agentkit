@@ -1,0 +1,58 @@
+{
+  "name": "@sec-edgar-agentkit/langgraph",
+  "version": "0.1.0",
+  "description": "LangGraph workflows for SEC EDGAR data analysis",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "author": {
+    "name": "Stefano Amorelli",
+    "email": "stefano@amorelli.tech",
+    "url": "https://amorelli.tech"
+  },
+  "license": "AGPL-3.0",
+  "homepage": "https://github.com/stefanoamorelli/sec-edgar-agentkit/tree/main/integrations/langgraph",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stefanoamorelli/sec-edgar-agentkit.git",
+    "directory": "integrations/langgraph"
+  },
+  "keywords": [
+    "sec",
+    "edgar",
+    "langgraph",
+    "workflow",
+    "financial",
+    "analysis",
+    "stateful"
+  ],
+  "scripts": {
+    "build": "npx esbuild src/index.ts --bundle --platform=node --outfile=dist/index.js '--external:@langchain/*' --external:zod --external:@sec-edgar-agentkit/langchain",
+    "build:types": "tsc --emitDeclarationOnly --skipLibCheck",
+    "test": "bun test __tests__",
+    "example": "tsx examples/real-analysis.ts",
+    "prepublishOnly": "bun run build"
+  },
+  "dependencies": {
+    "@langchain/core": "^0.3.0",
+    "@langchain/langgraph": "^0.2.0",
+    "zod": "^3.23.0"
+  },
+  "optionalDependencies": {
+    "@sec-edgar-agentkit/langchain": "^0.1.0"
+  },
+  "peerDependencies": {
+    "@langchain/openai": "^0.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}

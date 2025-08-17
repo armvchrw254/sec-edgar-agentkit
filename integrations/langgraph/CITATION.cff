@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+title: SEC EDGAR Agentkit for LangGraph
+message: "If you use this software, please cite it as below."
+type: software
+authors:
+  - family-names: "Amorelli"
+    given-names: "Stefano"
+    email: stefano@amorelli.tech
+    orcid: https://orcid.org/0009-0004-4917-0999
+repository-code: 'https://github.com/stefanoamorelli/sec-edgar-agentkit'
+url: 'https://github.com/stefanoamorelli/sec-edgar-agentkit/tree/main/integrations/langgraph'
+abstract: >-
+  Stateful, multi-step workflows for SEC EDGAR data analysis using LangGraph.
+keywords:
+  - sec-edgar
+  - langgraph
+  - workflows
+  - financial-analysis
+  - stateful-agents
+license: AGPL-3.0
