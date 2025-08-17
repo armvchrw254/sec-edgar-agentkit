@@ -26,8 +26,8 @@
     "toolkit"
   ],
   "scripts": {
-    "build": "tsc",
-    "test": "jest",
+    "build": "node --max-old-space-size=4096 ./node_modules/.bin/tsc",
+    "test": "node --max-old-space-size=4096 ./node_modules/.bin/jest",
     "prepublishOnly": "npm run build"
   },
   "dependencies": {
