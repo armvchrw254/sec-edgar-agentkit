@@ -28,9 +28,9 @@
   "scripts": {
     "build": "npx esbuild src/index.ts --bundle --platform=node --outfile=dist/index.js '--external:@langchain/*' --external:zod --external:@sec-edgar-agentkit/langchain",
     "build:types": "tsc --emitDeclarationOnly --skipLibCheck",
-    "test": "bun test __tests__",
+    "test": "jest",
     "example": "tsx examples/real-analysis.ts",
-    "prepublishOnly": "bun run build"
+    "prepublishOnly": "npm run build"
   },
   "dependencies": {
     "@langchain/core": "^0.3.0",
@@ -45,7 +45,10 @@
   },
   "devDependencies": {
     "@types/node": "^20.0.0",
-    "typescript": "^5.0.0"
+    "typescript": "^5.0.0",
+    "jest": "^29.0.0",
+    "ts-jest": "^29.0.0",
+    "@types/jest": "^29.0.0"
   },
   "files": [
     "dist",

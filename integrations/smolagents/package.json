@@ -20,6 +20,9 @@
     "README.md",
     "LICENSE"
   ],
+  "scripts": {
+    "test": "echo 'No tests configured yet for Python package'"
+  },
   "keywords": [
     "sec",
     "edgar",

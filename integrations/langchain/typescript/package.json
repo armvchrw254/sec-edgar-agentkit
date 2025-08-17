@@ -27,8 +27,8 @@
   ],
   "scripts": {
     "build": "tsc",
-    "test": "bun test __tests__",
-    "prepublishOnly": "bun run build"
+    "test": "jest",
+    "prepublishOnly": "npm run build"
   },
   "dependencies": {
     "@langchain/core": "^0.3.0",
@@ -41,7 +41,10 @@
   },
   "devDependencies": {
     "@types/node": "^20.0.0",
-    "typescript": "^5.0.0"
+    "typescript": "^5.0.0",
+    "jest": "^29.0.0",
+    "ts-jest": "^29.0.0",
+    "@types/jest": "^29.0.0"
   },
   "files": [
     "dist",
