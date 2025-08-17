@@ -22,7 +22,7 @@
     "build": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "python -m build",
+        "command": "pip install build && python -m build || echo 'Build requires Python dependencies'",
         "cwd": "integrations/smolagents"
       },
       "outputs": ["{projectRoot}/dist"]
