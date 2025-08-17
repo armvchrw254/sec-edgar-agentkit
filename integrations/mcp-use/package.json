@@ -1,10 +1,14 @@
 {
-  "name": "sec-edgar-mcp-use",
+  "name": "@sec-edgar-agentkit/mcp-use",
   "version": "0.1.0",
   "description": "Natural language interface for SEC EDGAR data using MCP-use",
   "type": "module",
   "main": "index.js",
-  "author": "Stefano Amorelli <stefano@amorelli.tech>",
+  "author": {
+    "name": "Stefano Amorelli",
+    "email": "stefano@amorelli.tech",
+    "url": "https://amorelli.tech"
+  },
   "license": "AGPL-3.0",
   "homepage": "https://github.com/stefanoamorelli/sec-edgar-agentkit/tree/main/integrations/mcp-use",
   "repository": {
