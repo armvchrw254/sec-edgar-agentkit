@@ -1,11 +1,17 @@
-# MCP-use Integration
+# SEC EDGAR Agentkit for MCP-use
 
 Simple, natural language interface to SEC EDGAR data using MCP-use.
+
+## Installation
+
+```bash
+npm install @sec-edgar-agentkit/mcp-use
+```
 
 ## Usage
 
 ```javascript
-import { agent, lookupCompany, analyzeFinancials } from './integrations/mcp-use';
+import { agent, lookupCompany, analyzeFinancials } from '@sec-edgar-agentkit/mcp-use';
 
 // Natural language queries
 const result = await agent.use("What were the key events in Tesla's recent 8-K filings?");
