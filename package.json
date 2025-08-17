@@ -31,16 +31,17 @@
   "author": "Stefano Amorelli <stefano@amorelli.tech>",
   "license": "AGPL-3.0",
   "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.0.0",
-    "langchain": "^0.3.0",
     "@langchain/core": "^0.3.0",
     "@langchain/openai": "^0.3.0",
-    "zod": "^3.23.0",
-    "mcp-use": "^0.1.0"
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "langchain": "^0.3.0",
+    "mcp-use": "^0.1.0",
+    "zod": "^3.23.0"
   },
   "devDependencies": {
     "@nx/eslint": "21.3.11",
     "@nx/jest": "21.3.11",
+    "@nx/linter": "^19.8.4",
     "@nxlv/python": "^21.0.4",
     "@types/jest": "^29.0.0",
     "@types/node": "^20.0.0",
