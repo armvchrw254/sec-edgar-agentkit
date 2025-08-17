@@ -328,7 +328,7 @@ export class SECEdgarAgentToolkit {
           fiscalYear: z.number().optional().describe('Fiscal year'),
           fiscalPeriod: z.enum(['FY', 'Q1', 'Q2', 'Q3', 'Q4']).optional().describe('Fiscal period'),
         }),
-        func: async ({ cik, formType, fiscalYear, fiscalPeriod }) => {
+        func: async ({ cik, formType, fiscalYear: _fiscalYear, fiscalPeriod: _fiscalPeriod }) => {
           try {
             const company = await this.client.companies.getByCik(cik);
             const filings = await company.filings

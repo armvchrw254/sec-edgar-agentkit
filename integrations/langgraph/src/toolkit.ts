@@ -54,7 +54,7 @@ function createMockTools(): DynamicStructuredTool[] {
       formType: z.string().optional(),
       count: z.number().optional()
     }),
-    func: async ({ cik, formType, count }) => {
+    func: async ({ cik: _cik, formType, count: _count }) => {
       return JSON.stringify({
         filings: [
           {
@@ -77,7 +77,7 @@ function createMockTools(): DynamicStructuredTool[] {
     schema: z.object({
       accessionNumber: z.string()
     }),
-    func: async ({ accessionNumber }) => {
+    func: async ({ accessionNumber: _accessionNumber }) => {
       return JSON.stringify({
         statements: {
           income: {
@@ -101,7 +101,7 @@ function createMockTools(): DynamicStructuredTool[] {
       cik: z.string(),
       limit: z.number().optional()
     }),
-    func: async ({ cik, limit }) => {
+    func: async ({ cik: _cik, limit: _limit }) => {
       return JSON.stringify({
         events: [
           { type: 'Material Agreement', date: '2024-01-15' },
@@ -119,7 +119,7 @@ function createMockTools(): DynamicStructuredTool[] {
       cik: z.string(),
       months: z.number().optional()
     }),
-    func: async ({ cik, months }) => {
+    func: async ({ cik: _cik, months: _months }) => {
       return JSON.stringify({
         summary: {
           totalBought: 5000000,

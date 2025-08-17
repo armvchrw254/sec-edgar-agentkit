@@ -1,6 +1,6 @@
-import { StateGraph, END, Annotation } from '@langchain/langgraph';
+import { StateGraph, Annotation } from '@langchain/langgraph';
 import { BaseMessage } from '@langchain/core/messages';
-import { AnalysisState, CompanyData, FilingType } from './types';
+import { CompanyData, FilingType } from './types';
 import {
   lookupCompanies,
   fetchFilings,
@@ -125,7 +125,7 @@ export function createEventMonitoringWorkflow() {
 
 export async function runFinancialAnalysis(
   companies: string[],
-  options?: {
+  _options?: {
     filingType?: FilingType;
     yearsBack?: number;
   }
@@ -150,7 +150,7 @@ export async function runFinancialAnalysis(
 
 export async function runComprehensiveAnalysis(
   companies: string[],
-  options?: {
+  _options?: {
     includeInsiderTrading?: boolean;
     include8K?: boolean;
   }
@@ -175,7 +175,7 @@ export async function runComprehensiveAnalysis(
 
 export async function monitorEvents(
   companies: string[],
-  options?: {
+  _options?: {
     checkInterval?: number;
   }
 ) {

@@ -1,5 +1,4 @@
 import { runComprehensiveAnalysis } from '@sec-edgar-agentkit/langgraph';
-import { ChatOpenAI } from '@langchain/openai';
 
 async function main() {
   console.log('Starting comprehensive analysis workflow...\n');

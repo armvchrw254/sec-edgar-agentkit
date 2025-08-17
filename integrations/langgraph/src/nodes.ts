@@ -1,5 +1,5 @@
 import { AnalysisState, CompanyData, Filing, FinancialMetrics } from './types';
-import { HumanMessage, AIMessage } from '@langchain/core/messages';
+import { AIMessage } from '@langchain/core/messages';
 import { DynamicStructuredTool } from '@langchain/core/tools';
 import { loadSECEdgarTools } from './toolkit';
 
