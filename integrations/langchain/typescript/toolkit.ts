@@ -1,6 +1,19 @@
 import { DynamicStructuredTool } from '@langchain/core/tools';
 import { z } from 'zod';
-import { createClient } from 'sec-edgar-toolkit';
+// import { createClient } from 'sec-edgar-toolkit';
+
+// Temporary mock for testing
+const createClient = (options: any) => ({
+  companies: {
+    getByCik: (cik: string) => Promise.resolve({ cik, name: 'Test Company' }),
+    search: (query: string) => Promise.resolve([])
+  },
+  filings: {
+    formTypes: (types: string[]) => ({
+      get: () => Promise.resolve([])
+    })
+  }
+});
 
 export interface Configuration {
   actions?: {
