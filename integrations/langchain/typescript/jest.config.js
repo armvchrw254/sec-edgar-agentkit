@@ -5,11 +5,7 @@ module.exports = {
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
   transform: {
     '^.+\\.tsx?$': ['ts-jest', {
-      tsconfig: {
-        esModuleInterop: true,
-        allowSyntheticDefaultImports: true,
-        skipLibCheck: true
-      }
+      tsconfig: 'tsconfig.test.json'
     }]
   },
   testTimeout: 10000
