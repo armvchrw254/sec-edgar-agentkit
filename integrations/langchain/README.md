@@ -1,84 +1,98 @@
-# LangChain Integration
+# SEC EDGAR AgentKit for LangChain
 
-SEC EDGAR toolkit for LangChain agents.
+AI-powered SEC filing analysis toolkit for LangChain agents. Available in both Python and TypeScript.
 
-## Installation
+## 🐍 Python Version
+
+The Python implementation works with standard LangChain and is perfect for:
+- Jupyter notebooks and Google Colab
+- Data science workflows
+- Research and analysis
+- Quick prototyping
+
+[📁 View Python Implementation](./python/)
 
 ```bash
-npm install @langchain/core @langchain/openai langchain zod
+pip install sec-edgar-langchain
 ```
 
-## Usage
+## 📦 TypeScript Version
 
+The TypeScript implementation works with LangChain.js and is ideal for:
+- Node.js applications
+- Web APIs and services
+- React/Next.js applications
+- Production deployments
+
+[📁 View TypeScript Implementation](./typescript/)
+
+```bash
+npm install @sec-edgar-agentkit/langchain
+```
+
+## Features
+
+Both versions provide the same powerful capabilities:
+
+- 🔍 **Company Search**: Look up CIK numbers and company information
+- 📄 **Filing Retrieval**: Search and fetch 10-K, 10-Q, 8-K, and other SEC filings
+- 💰 **Financial Analysis**: Extract financial statements and XBRL data
+- 📊 **Insider Trading**: Track Form 4 filings and insider transactions
+- 🎯 **Material Events**: Monitor 8-K filings for important announcements
+- 🤖 **AI Analysis**: Leverage LLMs to interpret and summarize filing data
+
+## Quick Start
+
+### Python
+```python
+from sec_edgar_langchain import SECEdgarToolkit, SECEdgarConfig
+from langchain_openai import ChatOpenAI
+from langchain.agents import create_react_agent
+
+config = SECEdgarConfig(user_agent="MyApp/1.0 (email@example.com)")
+toolkit = SECEdgarToolkit(config)
+tools = toolkit.get_tools()
+
+llm = ChatOpenAI(model="gpt-4")
+agent = create_react_agent(llm, tools, prompt)
+```
+
+### TypeScript
 ```typescript
-import { SECEdgarAgentToolkit } from './integrations/langchain';
+import { SECEdgarAgentToolkit } from '@sec-edgar-agentkit/langchain';
 import { ChatOpenAI } from '@langchain/openai';
-import { AgentExecutor, createStructuredChatAgent } from 'langchain/agents';
-import { ChatPromptTemplate } from '@langchain/core/prompts';
+import { createStructuredChatAgent } from 'langchain/agents';
 
-// Initialize toolkit
 const toolkit = new SECEdgarAgentToolkit({
-  userAgent: 'YourApp/1.0 (your.email@example.com)', // Required by SEC EDGAR
-  configuration: {
-    actions: {
-      companies: { lookupCIK: true, getInfo: true, getFacts: true },
-      filings: { search: true, getContent: true, analyze8K: true },
-      financial: { getStatements: true, parseXBRL: true },
-      insiderTrading: { analyzeTransactions: true }
-    }
-  }
+  userAgent: 'MyApp/1.0 (email@example.com)'
 });
 
-// Create agent
-const llm = new ChatOpenAI({ modelName: 'gpt-4' });
 const tools = toolkit.getTools();
-
-const prompt = ChatPromptTemplate.fromMessages([
-  ['system', 'You are a financial analyst with access to SEC EDGAR data.'],
-  ['human', '{input}'],
-  ['assistant', '{agent_scratchpad}']
-]);
-
+const llm = new ChatOpenAI({ modelName: 'gpt-4' });
 const agent = await createStructuredChatAgent({ llm, tools, prompt });
-const executor = new AgentExecutor({ agent, tools });
-
-// Use the agent
-const result = await executor.invoke({
-  input: "What is Apple's latest revenue and how does it compare to last year?"
-});
-
-console.log(result.output);
 ```
 
-## Available Tools
+## Demo Notebooks
 
-- `sec_edgar_cik_lookup`: Look up company CIK
-- `sec_edgar_company_info`: Get company information
-- `sec_edgar_company_facts`: Get XBRL company facts
-- `sec_edgar_filing_search`: Search for filings
-- `sec_edgar_filing_content`: Extract filing content
-- `sec_edgar_analyze_8k`: Analyze 8-K reports
-- `sec_edgar_financial_statements`: Get financial statements
-- `sec_edgar_xbrl_parse`: Parse XBRL data
-- `sec_edgar_insider_trading`: Analyze insider trading
+- [🐍 Python Jupyter Notebook](./python/demo.ipynb) - Run in Jupyter or Google Colab
+- [📦 TypeScript Examples](./typescript/demo.ipynb) - Node.js implementation examples
 
-## Configuration
+## Use Cases
 
-Control which tools are available:
+- **Earnings Analysis**: Automated quarterly earnings report analysis
+- **Portfolio Monitoring**: Track multiple companies' financial health
+- **Risk Assessment**: Identify material risks from recent filings
+- **Insider Trading Signals**: Monitor executive buying/selling patterns
+- **Competitive Intelligence**: Compare companies side-by-side
+- **Event Detection**: Real-time alerts for 8-K material events
 
-```typescript
-const toolkit = new SECEdgarAgentToolkit({
-  userAgent: 'YourApp/1.0 (your.email@example.com)',
-  configuration: {
-    actions: {
-      companies: {
-        lookupCIK: true,
-        getInfo: false,  // Disable company info tool
-        getFacts: true
-      },
-      // Disable all financial tools
-      financial: false
-    }
-  }
-});
-```
+## Resources
+
+- [SEC EDGAR Documentation](https://www.sec.gov/edgar)
+- [LangChain Python Docs](https://python.langchain.com)
+- [LangChain.js Docs](https://js.langchain.com)
+- [GitHub Repository](https://github.com/stefanoamorelli/sec-edgar-agentkit)
+
+## License
+
+AGPL-3.0 - See [LICENSE](./LICENSE) for details.

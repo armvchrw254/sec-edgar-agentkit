@@ -1,16 +1,20 @@
 {
-  "name": "sec-edgar-langchain",
+  "name": "@sec-edgar-agentkit/langchain",
   "version": "0.1.0",
   "description": "LangChain toolkit for SEC EDGAR data analysis",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "author": "Stefano Amorelli <stefano@amorelli.tech>",
+  "author": {
+    "name": "Stefano Amorelli",
+    "email": "stefano@amorelli.tech",
+    "url": "https://amorelli.tech"
+  },
   "license": "AGPL-3.0",
-  "homepage": "https://github.com/stefanoamorelli/sec-edgar-agentkit/tree/main/integrations/langchain",
+  "homepage": "https://github.com/stefanoamorelli/sec-edgar-agentkit/tree/main/integrations/langchain/typescript",
   "repository": {
     "type": "git",
     "url": "https://github.com/stefanoamorelli/sec-edgar-agentkit.git",
-    "directory": "integrations/langchain"
+    "directory": "integrations/langchain/typescript"
   },
   "keywords": [
     "sec",
