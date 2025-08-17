@@ -16,10 +16,11 @@ jobs:
       with:
         fetch-depth: 0  # Needed for Nx affected commands
     
-    - name: Setup Bun
-      uses: oven-sh/setup-bun@v2
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
       with:
-        bun-version: latest
+        node-version: '20'
+        cache: 'npm'
     
     - name: Set up Python 3.11
       uses: actions/setup-python@v5
@@ -27,7 +28,7 @@ jobs:
         python-version: '3.11'
     
     - name: Install dependencies
-      run: bun install
+      run: npm ci
     
     - name: Setup Nx SHAs
       uses: nrwl/nx-set-shas@v4
@@ -57,13 +58,14 @@ jobs:
       with:
         python-version: ${{ matrix.python-version }}
     
-    - name: Setup Bun
-      uses: oven-sh/setup-bun@v2
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
       with:
-        bun-version: latest
+        node-version: '20'
+        cache: 'npm'
     
     - name: Install dependencies
-      run: bun install
+      run: npm ci
     
     - name: Install Python dependencies for Gradio
       run: |

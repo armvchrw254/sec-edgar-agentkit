@@ -27,21 +27,17 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-      
-      - name: Setup Bun
-        uses: oven-sh/setup-bun@v1
-        with:
-          bun-version: latest
+          cache: 'npm'
       
       - name: Install dependencies
         run: |
           cd integrations/mcp-use
-          bun install
+          npm ci
       
       - name: Run tests
         run: |
           cd integrations/mcp-use
-          bun test
+          npm test
       
       - name: Lint check
         run: |

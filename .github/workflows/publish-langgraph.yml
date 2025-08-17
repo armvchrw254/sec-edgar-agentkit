@@ -32,26 +32,22 @@ jobs:
         with:
           node-version: '20.x'
           registry-url: 'https://registry.npmjs.org'
-      
-      - name: Setup Bun
-        uses: oven-sh/setup-bun@v1
-        with:
-          bun-version: latest
+          cache: 'npm'
       
       - name: Install dependencies
         run: |
           cd integrations/langgraph
-          bun install
+          npm ci
       
       - name: Build package
         run: |
           cd integrations/langgraph
-          bun run build
+          npm run build
       
       - name: Run tests
         run: |
           cd integrations/langgraph
-          bun test
+          npm test
       
       - name: Update version if provided
         if: github.event_name == 'workflow_dispatch'

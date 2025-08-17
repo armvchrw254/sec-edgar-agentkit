@@ -32,36 +32,32 @@ jobs:
         with:
           node-version: '20.x'
           registry-url: 'https://registry.npmjs.org'
-      
-      - name: Setup Bun
-        uses: oven-sh/setup-bun@v1
-        with:
-          bun-version: latest
+          cache: 'npm'
       
       - name: Install dependencies
         run: |
-          cd integrations/langchain
-          bun install
+          cd integrations/langchain/typescript
+          npm ci
       
       - name: Build package
         run: |
-          cd integrations/langchain
-          bun run build
+          cd integrations/langchain/typescript
+          npm run build
       
       - name: Run tests
         run: |
-          cd integrations/langchain
-          bun test
+          cd integrations/langchain/typescript
+          npm test
       
       - name: Update version if provided
         if: github.event_name == 'workflow_dispatch'
         run: |
-          cd integrations/langchain
+          cd integrations/langchain/typescript
           npm version ${{ github.event.inputs.version }} --no-git-tag-version
       
       - name: Publish to npm
         run: |
-          cd integrations/langchain
+          cd integrations/langchain/typescript
           if [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
             npm publish --access public --tag ${{ github.event.inputs.tag }}
           else

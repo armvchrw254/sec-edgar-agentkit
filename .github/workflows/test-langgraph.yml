@@ -27,26 +27,22 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-      
-      - name: Setup Bun
-        uses: oven-sh/setup-bun@v1
-        with:
-          bun-version: latest
+          cache: 'npm'
       
       - name: Install dependencies
         run: |
           cd integrations/langgraph
-          bun install
+          npm ci
       
       - name: Build package
         run: |
           cd integrations/langgraph
-          bun run build
+          npm run build
       
       - name: Run tests
         run: |
           cd integrations/langgraph
-          bun test
+          npm test
       
       - name: Type check
         run: |
