@@ -4,7 +4,8 @@
   "private": true,
   "description": "Monorepo for SEC EDGAR agent toolkit integrations",
   "workspaces": [
-    "integrations/langchain",
+    "integrations/langchain/typescript",
+    "integrations/langgraph",
     "integrations/mcp-use",
     "integrations/gradio",
     "integrations/dify",
